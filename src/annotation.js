@@ -1,5 +1,5 @@
 import { @metadata } from './metadata';
 
-export decorator @Inject() {
+export decorator @Annotation(key, value) {
     @metadata(key, value)
 }
