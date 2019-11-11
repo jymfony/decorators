@@ -1,4 +1,4 @@
-import { @Annotation } from '@jymfony/decorators';
+import { @Annotation } from '../annotation';
 
 export class Inject {
     __construct(serviceId) {
