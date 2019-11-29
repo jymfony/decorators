@@ -8,43 +8,25 @@ describe('Route', function () {
         expect(reflClass.metadata[0][1]).to.dumpsAsFormat(`array:2 [
   0 => Route {
     +"_path": "/foobar"
-    +"_localizedPaths": {}
     +"_name": undefined
-    +"_requirements": {}
-    +"_options": {}
-    +"_defaults": {}
+    +"_requirements": undefined
+    +"_options": undefined
+    +"_defaults": undefined
     +"_host": undefined
-    +"_methods": array:2 [
-      0 => "GET",
-      1 => "POST"
-    ]
-    +"_schemes": array:2 [
-      0 => "http",
-      1 => "https"
-    ]
+    +"_methods": undefined
+    +"_schemes": undefined
     +"_condition": undefined
-    +"_locale": undefined
-    +"_format": undefined
   },
   1 => Route {
     +"_path": "/barbar"
-    +"_localizedPaths": {}
     +"_name": undefined
-    +"_requirements": {}
-    +"_options": {}
-    +"_defaults": {}
+    +"_requirements": undefined
+    +"_options": undefined
+    +"_defaults": undefined
     +"_host": undefined
-    +"_methods": array:2 [
-      0 => "GET",
-      1 => "POST"
-    ]
-    +"_schemes": array:2 [
-      0 => "http",
-      1 => "https"
-    ]
+    +"_methods": undefined
+    +"_schemes": undefined
     +"_condition": undefined
-    +"_locale": undefined
-    +"_format": undefined
   }
 ]`);
     });

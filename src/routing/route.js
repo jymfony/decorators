@@ -1,20 +1,23 @@
 export class Route {
     __construct({
         path,
-        localizedPaths = {},
-        name = undefined,
-        requirements = {},
-        options = {},
-        defaults = {},
-        host = undefined,
-        methods = [ 'GET', 'POST' ],
-        schemes = [ 'http', 'https' ],
-        condition = undefined,
-        locale = undefined,
-        format = undefined,
+        name,
+        requirements,
+        options,
+        defaults,
+        host,
+        methods,
+        schemes,
+        condition,
+        locale,
+        format,
     }) {
-        this._path = path;
-        this._localizedPaths = localizedPaths;
+        if (isObjectLiteral(path)) {
+            this._localizedPaths = path;
+        } else {
+            this._path = path;
+        }
+
         this._name = name;
         this._requirements = requirements;
         this._options = options;
@@ -23,8 +26,16 @@ export class Route {
         this._methods = methods;
         this._schemes = schemes;
         this._condition = condition;
-        this._locale = locale;
-        this._format = format;
+
+        if (locale) {
+            this._defaults = (this._defaults || {});
+            this._defaults._locale = locale;
+        }
+
+        if (format) {
+            this._defaults = (this._defaults || {});
+            this._defaults._format = format;
+        }
     }
 
     get path() {
@@ -66,22 +77,13 @@ export class Route {
     get condition() {
         return this._condition;
     }
-
-    get locale() {
-        return this._locale;
-    }
-
-    get format() {
-        return this._format;
-    }
 }
 
 /**
  * Route annotation.
  *
  * @param {object} options
- * @param {string} options.path
- * @param {Object.<string, string>} [options.localizedPaths = {}]
+ * @param {string | Object.<string, string>} options.path
  * @param {string} [options.name]
  * @param {Object.<string, string>} [options.requirements = {}]
  * @param {Object.<string, string>} [options.options = {}]
@@ -103,8 +105,7 @@ export decorator @Route(options) {
  * GET Route annotation.
  *
  * @param {object} options
- * @param {string} options.path
- * @param {Object.<string, string>} [options.localizedPaths = {}]
+ * @param {string | Object.<string, string>} options.path
  * @param {string} [options.name]
  * @param {Object.<string, string>} [options.requirements = {}]
  * @param {Object.<string, string>} [options.options = {}]
@@ -123,8 +124,7 @@ export decorator @Get(options) {
  * POST Route annotation.
  *
  * @param {object} options
- * @param {string} options.path
- * @param {Object.<string, string>} [options.localizedPaths = {}]
+ * @param {string | Object.<string, string>} options.path
  * @param {string} [options.name]
  * @param {Object.<string, string>} [options.requirements = {}]
  * @param {Object.<string, string>} [options.options = {}]
@@ -143,8 +143,7 @@ export decorator @Post(options) {
  * PUT Route annotation.
  *
  * @param {object} options
- * @param {string} options.path
- * @param {Object.<string, string>} [options.localizedPaths = {}]
+ * @param {string | Object.<string, string>} options.path
  * @param {string} [options.name]
  * @param {Object.<string, string>} [options.requirements = {}]
  * @param {Object.<string, string>} [options.options = {}]
@@ -163,8 +162,7 @@ export decorator @Put(options) {
  * DELETE Route annotation.
  *
  * @param {object} options
- * @param {string} options.path
- * @param {Object.<string, string>} [options.localizedPaths = {}]
+ * @param {string | Object.<string, string>} options.path
  * @param {string} [options.name]
  * @param {Object.<string, string>} [options.requirements = {}]
  * @param {Object.<string, string>} [options.options = {}]
@@ -183,8 +181,7 @@ export decorator @Delete(options) {
  * PATCH Route annotation.
  *
  * @param {object} options
- * @param {string} options.path
- * @param {Object.<string, string>} [options.localizedPaths = {}]
+ * @param {string | Object.<string, string>} options.path
  * @param {string} [options.name]
  * @param {Object.<string, string>} [options.requirements = {}]
  * @param {Object.<string, string>} [options.options = {}]
