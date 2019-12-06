@@ -96,9 +96,13 @@ export class Route {
  * @param {string} [options.format]
  */
 export decorator @Route(options) {
-    @register((target, prop) =>
-        MetadataStorage.addMetadata(Route, new Route(isString(options) ? { path: options } : options), target, prop)
-    )
+    @register((target, prop, parameterIndex = null) => {
+        if (null !== parameterIndex) {
+            throw new Exception('Route decorator cannot be used on parameters');
+        }
+
+        MetadataStorage.addMetadata(Route, new Route(isString(options) ? {path: options} : options), target, prop);
+    })
 }
 
 /**
