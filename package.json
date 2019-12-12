@@ -1,6 +1,6 @@
 {
   "name": "@jymfony/decorators",
-  "version": "0.1.0-dev",
+  "version": "0.1.0-alpha.19",
   "description": "Jymfony Base Decorators",
   "main": "src/index.js",
   "scripts": {
@@ -17,10 +17,10 @@
     "node": ">=8.10.0"
   },
   "devDependencies": {
-    "@jymfony/autoloader": "https://github.com/jymfony/autoloader.git",
-    "@jymfony/debug": "https://github.com/jymfony/debug.git",
-    "@jymfony/var-dumper": "https://github.com/jymfony/var-dumper.git",
-    "@jymfony/util": "https://github.com/jymfony/util.git",
+    "@jymfony/autoloader": "*",
+    "@jymfony/debug": "*",
+    "@jymfony/var-dumper": "*",
+    "@jymfony/util": "*",
     "chai": "^4.2",
     "mocha": "^6.0"
   },
