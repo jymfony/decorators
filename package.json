@@ -4,7 +4,7 @@
   "description": "Jymfony Base Decorators",
   "main": "src/index.js",
   "scripts": {
-    "test": "node ./tests.js test/**"
+    "test": "node $NODE_FLAGS ./tests.js test/**"
   },
   "keywords": [
     "annotations",
@@ -20,6 +20,7 @@
     "@jymfony/autoloader": "https://github.com/jymfony/autoloader.git",
     "@jymfony/debug": "https://github.com/jymfony/debug.git",
     "@jymfony/var-dumper": "https://github.com/jymfony/var-dumper.git",
+    "@jymfony/util": "https://github.com/jymfony/util.git",
     "chai": "^4.2",
     "mocha": "^6.0"
   },
