@@ -21,6 +21,11 @@ export const getMetadataTarget = (target, prop) => {
 
 export decorator @metadata(key, value) {
     @register((target, prop, parameterIndex = null) => {
+        if (undefined === value && !! key && typeof key === 'object') {
+            value = key;
+            key = value.constructor;
+        }
+
         if (null !== parameterIndex) {
             MetadataStorage.defineMetadata(key, value, getMetadataTarget(target, prop), parameterIndex)
         } else {

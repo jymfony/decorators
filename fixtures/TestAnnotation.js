@@ -11,5 +11,5 @@ export class TestAnnotation {
 }
 
 export decorator @TestAnnotation(value) {
-    @Annotation(TestAnnotation, new TestAnnotation(value))
+    @Annotation(new TestAnnotation(value))
 }

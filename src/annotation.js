@@ -1,5 +1,5 @@
 import { @metadata } from './metadata';
 
-export decorator @Annotation(key, value) {
-    @metadata(key, value)
+export decorator @Annotation(value) {
+    @metadata(value)
 }
