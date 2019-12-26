@@ -12,6 +12,6 @@ export decorator @Processor(T) {
             throw new Exception('Processor decorator could be used on classes only');
         }
 
-        MetadataStorage.defineMetadata(Processor, T, getMetadataTarget(target, prop), parameterIndex)
+        MetadataStorage.defineMetadata(Processor, T, target);
     })
 }
