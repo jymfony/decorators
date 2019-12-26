@@ -1,6 +1,11 @@
 import { getMetadataTarget } from '../metadata';
 
-export const Processor = Symbol('Processor');
+export class Processor {
+    constructor() {
+        throw new Error('Cannot be constructed');
+    }
+}
+
 export decorator @Processor(T) {
     @register((target, prop, parameterIndex = null) => {
         if (null !== parameterIndex) {
