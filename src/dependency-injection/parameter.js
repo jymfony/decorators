@@ -11,5 +11,5 @@ export class Parameter {
 }
 
 export decorator @Parameter(serviceId) {
-    @Annotation(Parameter, new Parameter(serviceId))
+    @Annotation(new Parameter(serviceId))
 }

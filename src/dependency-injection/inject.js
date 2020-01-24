@@ -16,5 +16,5 @@ export class Inject {
 }
 
 export decorator @Inject(serviceId, invalidBehavior) {
-    @Annotation(Inject, new Inject(serviceId, invalidBehavior))
+    @Annotation(new Inject(serviceId, invalidBehavior))
 }
