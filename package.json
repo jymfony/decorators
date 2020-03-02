@@ -17,10 +17,10 @@
     "node": ">=8.10.0"
   },
   "devDependencies": {
-    "@jymfony/autoloader": "https://github.com/jymfony/autoloader.git",
-    "@jymfony/debug": "https://github.com/jymfony/debug.git",
-    "@jymfony/var-dumper": "https://github.com/jymfony/var-dumper.git",
-    "@jymfony/util": "https://github.com/jymfony/util.git",
+    "@jymfony/autoloader": "^0.1.0-alpha.22",
+    "@jymfony/debug": "^0.1.0-alpha.22",
+    "@jymfony/var-dumper": "^0.1.0-alpha.22",
+    "@jymfony/util": "^0.1.0-alpha.22",
     "chai": "^4.2",
     "mocha": "^6.0"
   },

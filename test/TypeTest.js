@@ -7,7 +7,7 @@ describe('Type', function () {
     it ('should define parameter metadata', () => {
         new ReflectionClass(TypedMethodClass);
 
-        expect(MetadataStorage.getMetadata(TypedMethodClass.prototype.getAction, 0)).to.dumpsAs(
+        expect(MetadataStorage.getMetadata(TypedMethodClass.prototype.getAction, 0)).to.dump.as(
 `array:1 [
   0 => array:2 [
     0 => "Symbol(Type)",
@@ -16,7 +16,7 @@ describe('Type', function () {
 ]`
         );
 
-        expect(MetadataStorage.getMetadata(TypedMethodClass.prototype.getAction, 1)).to.dumpsAs(
+        expect(MetadataStorage.getMetadata(TypedMethodClass.prototype.getAction, 1)).to.dump.as(
 `array:1 [
   0 => array:2 [
     0 => "Symbol(Type)",
@@ -32,7 +32,7 @@ describe('Type', function () {
     it ('should define parameter metadata for private methods', __jymfony.Platform.hasPrivateMethodsSupport() ? () => {
         const reflClass = new ReflectionClass(TypedPrivateMethodClass);
 
-        expect(MetadataStorage.getMetadata(Util.getMetadataTarget(reflClass.getConstructor(), '#getAction'), 1)).to.dumpsAs(
+        expect(MetadataStorage.getMetadata(Util.getMetadataTarget(reflClass.getConstructor(), '#getAction'), 1)).to.dump.as(
             `array:1 [
   0 => array:2 [
     0 => "Symbol(Type)",
