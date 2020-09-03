@@ -25,7 +25,7 @@
     "mocha": "^6.0"
   },
   "config": {
-    "jymfony-autoload": {
+    "jymfony-autoload-dev": {
       "namespaces": {
         "App": "fixtures"
       }

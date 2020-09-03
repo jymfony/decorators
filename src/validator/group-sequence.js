@@ -4,12 +4,12 @@
  * @param {string[]} groups
  */
 export decorator @GroupSequence(groups) {
-@register((target, prop, parameterIndex = null) => {
-    if (null !== parameterIndex) {
-        throw new Exception('Route decorator cannot be used on parameters');
-    }
+    @register((target, prop, parameterIndex = null) => {
+        if (null !== parameterIndex) {
+            throw new Exception('Route decorator cannot be used on parameters');
+        }
 
-    const GroupSequence = Jymfony.Component.Validator.Constraints.GroupSequence;
-    MetadataStorage.addMetadata(GroupSequence, new GroupSequence(groups), target, prop);
-})
+        const GroupSequence = Jymfony.Component.Validator.Constraints.GroupSequence;
+        MetadataStorage.addMetadata(GroupSequence, new GroupSequence(groups), target, prop);
+    })
 }
