@@ -6,7 +6,7 @@
 export decorator @GroupSequence(groups) {
     @register((target, prop, parameterIndex = null) => {
         if (null !== parameterIndex) {
-            throw new Exception('Route decorator cannot be used on parameters');
+            throw new Exception('GroupSequence decorator cannot be used on parameters');
         }
 
         const GroupSequence = Jymfony.Component.Validator.Constraints.GroupSequence;

@@ -7,7 +7,7 @@ export class GroupSequenceProvider {
 export decorator @GroupSequenceProvider() {
     @register((target, prop, parameterIndex = null) => {
         if (null !== parameterIndex) {
-            throw new Exception('Route decorator cannot be used on parameters');
+            throw new Exception('GroupSequenceProvider decorator cannot be used on parameters');
         }
 
         MetadataStorage.addMetadata(GroupSequenceProvider, new GroupSequenceProvider(), target, prop);
