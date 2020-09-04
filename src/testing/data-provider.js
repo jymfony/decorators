@@ -1,6 +1,6 @@
 import { @Annotation } from "../annotation";
 
-class DataProvider {
+export class DataProvider {
     /**
      * Constructor.
      *
