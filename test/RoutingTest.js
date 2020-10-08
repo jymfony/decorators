@@ -5,7 +5,7 @@ describe('Route', function () {
     it ('should add metadata', () => {
         const reflClass = new ReflectionClass(RoutableClass);
         expect(reflClass.metadata[0]).to.have.length(2);
-        expect(reflClass.metadata[0][1]).to.dumpsAsFormat(`array:2 [
+        expect(reflClass.metadata[0][1]).to.dump.as.format(`array:2 [
   0 => Route {
     +"_path": "/foobar"
     +"_name": undefined
@@ -35,7 +35,7 @@ describe('Route', function () {
         const reflClass = new ReflectionClass(RoutableClass);
         const method = reflClass.getMethod('getAction');
         expect(method.metadata).to.have.length(1);
-        expect(method.metadata[0][1]).to.dumpsAsFormat(`Route {
+        expect(method.metadata[0][1]).to.dump.as.format(`Route {
   +"_path": "/get"
 %A
   +"_methods": array:1 [
@@ -49,7 +49,7 @@ describe('Route', function () {
         const reflClass = new ReflectionClass(RoutableClass);
         const method = reflClass.getMethod('postAction');
         expect(method.metadata).to.have.length(1);
-        expect(method.metadata[0][1]).to.dumpsAsFormat(`Route {
+        expect(method.metadata[0][1]).to.dump.as.format(`Route {
   +"_path": "/post"
 %A
   +"_methods": array:1 [
@@ -63,7 +63,7 @@ describe('Route', function () {
         const reflClass = new ReflectionClass(RoutableClass);
         const method = reflClass.getMethod('putAction');
         expect(method.metadata).to.have.length(1);
-        expect(method.metadata[0][1]).to.dumpsAsFormat(`Route {
+        expect(method.metadata[0][1]).to.dump.as.format(`Route {
   +"_path": "/put"
 %A
   +"_methods": array:1 [
@@ -77,7 +77,7 @@ describe('Route', function () {
         const reflClass = new ReflectionClass(RoutableClass);
         const method = reflClass.getMethod('deleteAction');
         expect(method.metadata).to.have.length(1);
-        expect(method.metadata[0][1]).to.dumpsAsFormat(`Route {
+        expect(method.metadata[0][1]).to.dump.as.format(`Route {
   +"_path": "/delete"
 %A
   +"_methods": array:1 [
@@ -91,7 +91,7 @@ describe('Route', function () {
         const reflClass = new ReflectionClass(RoutableClass);
         const method = reflClass.getMethod('patchAction');
         expect(method.metadata).to.have.length(1);
-        expect(method.metadata[0][1]).to.dumpsAsFormat(`Route {
+        expect(method.metadata[0][1]).to.dump.as.format(`Route {
   +"_path": "/patch"
 %A
   +"_methods": array:1 [
@@ -105,7 +105,7 @@ describe('Route', function () {
         const reflClass = new ReflectionClass(RoutableClass);
         const method = reflClass.getMethod('customAction');
         expect(method.metadata).to.have.length(1);
-        expect(method.metadata[0][1]).to.dumpsAsFormat(`Route {
+        expect(method.metadata[0][1]).to.dump.as.format(`Route {
   +"_path": "/method"
 %A
   +"_methods": array:1 [

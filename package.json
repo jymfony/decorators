@@ -17,15 +17,16 @@
     "node": ">=8.10.0"
   },
   "devDependencies": {
-    "@jymfony/autoloader": "*",
-    "@jymfony/debug": "*",
-    "@jymfony/var-dumper": "*",
-    "@jymfony/util": "*",
+    "@jymfony/autoloader": "^0.1.0-alpha.22",
+    "@jymfony/debug": "^0.1.0-alpha.22",
+    "@jymfony/var-dumper": "^0.1.0-alpha.22",
+    "@jymfony/util": "^0.1.0-alpha.22",
     "chai": "^4.2",
     "mocha": "^6.0"
   },
   "config": {
-    "jymfony-autoload": {
+    "jymfony-autoload": {},
+    "jymfony-autoload-dev": {
       "namespaces": {
         "App": "fixtures"
       }
