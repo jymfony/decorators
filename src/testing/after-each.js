@@ -1,4 +1,4 @@
-import { @Annotation } from "../annotation";
+import { Annotation } from "../annotation";
 
 export class AfterEach {
     /**
@@ -8,6 +8,8 @@ export class AfterEach {
     }
 }
 
-export decorator @afterEach() {
-    @Annotation(new AfterEach())
+export function afterEach() {
+    return function (value) {
+        return Annotation(new AfterEach())(value);
+    }
 }

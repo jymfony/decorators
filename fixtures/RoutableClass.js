@@ -1,4 +1,4 @@
-import { @Delete, @Get, @Patch, @Post, @Put, @Route } from "../src/routing";
+import { Delete, Get, Patch, Post, Put, Route } from '../src';
 
 @Route({ path: '/foobar' })
 @Route('/barbar')

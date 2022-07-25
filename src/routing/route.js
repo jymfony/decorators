@@ -1,17 +1,42 @@
+import { Annotation, ANNOTATION_TARGET_CLASS, ANNOTATION_TARGET_METHOD } from '../annotation';
+
+@Annotation(ANNOTATION_TARGET_CLASS | ANNOTATION_TARGET_METHOD)
 export class Route {
-    __construct({
-        path,
-        name,
-        requirements,
-        options,
-        defaults,
-        host,
-        methods,
-        schemes,
-        condition,
-        locale,
-        format,
-    }) {
+    /**
+     * Route annotation.
+     *
+     * @param {object} options
+     * @param {string | Object.<string, string>} options.path
+     * @param {string} [options.name]
+     * @param {Object.<string, string>} [options.requirements = {}]
+     * @param {Object.<string, string>} [options.options = {}]
+     * @param {Object.<string, string>} [options.defaults = {}]
+     * @param {string} [options.host]
+     * @param {string[]} [options.methods = ['GET', 'POST']]
+     * @param {string[]} [options.schemes = ['http', 'https']]
+     * @param {string} [options.condition]
+     * @param {string} [options.locale]
+     * @param {string} [options.format]
+     */
+    __construct(options) {
+        if (isString(options)) {
+            options = { path: options };
+        }
+
+        const {
+            path,
+            name,
+            requirements,
+            routeOptions,
+            defaults,
+            host,
+            methods,
+            schemes,
+            condition,
+            locale,
+            format,
+        } = options;
+
         if (isObjectLiteral(path)) {
             this._localizedPaths = path;
         } else {
@@ -20,7 +45,7 @@ export class Route {
 
         this._name = name;
         this._requirements = requirements;
-        this._options = options;
+        this._options = routeOptions;
         this._defaults = defaults;
         this._host = host;
         this._methods = methods;
@@ -80,32 +105,6 @@ export class Route {
 }
 
 /**
- * Route annotation.
- *
- * @param {object} options
- * @param {string | Object.<string, string>} options.path
- * @param {string} [options.name]
- * @param {Object.<string, string>} [options.requirements = {}]
- * @param {Object.<string, string>} [options.options = {}]
- * @param {Object.<string, string>} [options.defaults = {}]
- * @param {string} [options.host]
- * @param {string[]} [options.methods = ['GET', 'POST']]
- * @param {string[]} [options.schemes = ['http', 'https']]
- * @param {string} [options.condition]
- * @param {string} [options.locale]
- * @param {string} [options.format]
- */
-export decorator @Route(options) {
-    @register((target, prop, parameterIndex = null) => {
-        if (null !== parameterIndex) {
-            throw new Exception('Route decorator cannot be used on parameters');
-        }
-
-        MetadataStorage.addMetadata(Route, new Route(isString(options) ? {path: options} : options), target, prop);
-    })
-}
-
-/**
  * GET Route annotation.
  *
  * @param {object} options
@@ -120,8 +119,10 @@ export decorator @Route(options) {
  * @param {string} [options.locale]
  * @param {string} [options.format]
  */
-export decorator @Get(options) {
-    @Route(isString(options) ? { path: options, methods: [ 'GET' ] } : { ...options, methods: [ 'GET' ] })
+export class Get extends Route {
+    __construct(options) {
+        super.__construct(isString(options) ? { path: options, methods: [ 'GET' ] } : { ...options, methods: [ 'GET' ] });
+    }
 }
 
 /**
@@ -139,8 +140,10 @@ export decorator @Get(options) {
  * @param {string} [options.locale]
  * @param {string} [options.format]
  */
-export decorator @Post(options) {
-    @Route(isString(options) ? { path: options, methods: [ 'POST' ] } : { ...options, methods: [ 'POST' ] })
+export class Post extends Route {
+    __construct(options) {
+        super.__construct(isString(options) ? { path: options, methods: [ 'POST' ] } : { ...options, methods: [ 'POST' ] });
+    }
 }
 
 /**
@@ -158,8 +161,10 @@ export decorator @Post(options) {
  * @param {string} [options.locale]
  * @param {string} [options.format]
  */
-export decorator @Put(options) {
-    @Route(isString(options) ? { path: options, methods: [ 'PUT' ] } : { ...options, methods: [ 'PUT' ] })
+export class Put extends Route {
+    __construct(options) {
+        super.__construct(isString(options) ? { path: options, methods: [ 'PUT' ] } : { ...options, methods: [ 'PUT' ] });
+    }
 }
 
 /**
@@ -177,8 +182,10 @@ export decorator @Put(options) {
  * @param {string} [options.locale]
  * @param {string} [options.format]
  */
-export decorator @Delete(options) {
-    @Route(isString(options) ? { path: options, methods: [ 'DELETE' ] } : { ...options, methods: [ 'DELETE' ] })
+export class Delete extends Route {
+    __construct(options) {
+        super.__construct(isString(options) ? { path: options, methods: [ 'DELETE' ] } : { ...options, methods: [ 'DELETE' ] });
+    }
 }
 
 /**
@@ -196,6 +203,8 @@ export decorator @Delete(options) {
  * @param {string} [options.locale]
  * @param {string} [options.format]
  */
-export decorator @Patch(options) {
-    @Route(isString(options) ? { path: options, methods: [ 'PATCH' ] } : { ...options, methods: [ 'PATCH' ] })
+export class Patch extends Route {
+    __construct(options) {
+        super.__construct(isString(options) ? { path: options, methods: [ 'PATCH' ] } : { ...options, methods: [ 'PATCH' ] });
+    }
 }

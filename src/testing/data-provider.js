@@ -1,4 +1,5 @@
 import { @Annotation } from "../annotation";
+import {AfterEach} from "./after-each";
 
 export class DataProvider {
     /**
@@ -20,6 +21,8 @@ export class DataProvider {
     }
 }
 
-export decorator @dataProvider(provider) {
-    @Annotation(new DataProvider(provider))
+export function dataProvider(provider) {
+    return function (value) {
+        return Annotation(new DataProvider(provider))(value);
+    };
 }

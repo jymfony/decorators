@@ -1,17 +1,8 @@
-import { getMetadataTarget } from '../metadata';
+import { Annotation, ANNOTATION_TARGET_CLASS } from "../annotation";
 
+@Annotation(ANNOTATION_TARGET_CLASS)
 export class Processor {
     constructor() {
         throw new Error('Cannot be constructed');
     }
-}
-
-export decorator @Processor(T) {
-    @register((target, prop, parameterIndex = null) => {
-        if (null !== parameterIndex) {
-            throw new Exception('Processor decorator could be used on classes only');
-        }
-
-        MetadataStorage.defineMetadata(Processor, T, target);
-    })
 }

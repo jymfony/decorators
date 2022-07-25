@@ -1,5 +1,11 @@
-import { @Annotation } from '../annotation';
+import {
+    Annotation,
+    ANNOTATION_TARGET_FIELD,
+    ANNOTATION_TARGET_PARAMETER,
+    ANNOTATION_TARGET_SETTER
+} from '../annotation';
 
+@Annotation(ANNOTATION_TARGET_PARAMETER | ANNOTATION_TARGET_FIELD | ANNOTATION_TARGET_SETTER)
 export class Parameter {
     __construct(parameterName) {
         this._parameterName = parameterName;
@@ -10,6 +16,3 @@ export class Parameter {
     }
 }
 
-export decorator @Parameter(serviceId) {
-    @Annotation(new Parameter(serviceId))
-}

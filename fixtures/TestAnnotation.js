@@ -1,5 +1,6 @@
-import { @Annotation } from "../src";
+import { Annotation, ANNOTATION_TARGET_CLASS } from '../src';
 
+@Annotation(ANNOTATION_TARGET_CLASS)
 export class TestAnnotation {
     __construct(value) {
         this._value = value;
@@ -8,8 +9,4 @@ export class TestAnnotation {
     get value() {
         return this._value;
     }
-}
-
-export decorator @TestAnnotation(value) {
-    @Annotation(new TestAnnotation(value))
 }

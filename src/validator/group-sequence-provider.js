@@ -1,15 +1,8 @@
-export class GroupSequenceProvider {
-}
+import { Annotation, ANNOTATION_TARGET_CLASS } from '../annotation';
 
 /**
  * GroupSequenceProvider annotation.
  */
-export decorator @GroupSequenceProvider() {
-    @register((target, prop, parameterIndex = null) => {
-        if (null !== parameterIndex) {
-            throw new Exception('GroupSequenceProvider decorator cannot be used on parameters');
-        }
-
-        MetadataStorage.addMetadata(GroupSequenceProvider, new GroupSequenceProvider(), target, prop);
-    })
+@Annotation(ANNOTATION_TARGET_CLASS)
+export class GroupSequenceProvider {
 }

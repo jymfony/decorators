@@ -1,12 +1,12 @@
-import { getMetadataTarget } from './metadata';
+import { getMetadataTarget, getPropName } from './metadata';
 
-export const Type = Symbol('Type');
-export decorator @Type(T) {
-    @register((target, prop, parameterIndex = null) => {
+export function Type(T) {
+    return function(target, context) {
+        const parameterIndex = context.parameterIndex === undefined ? null : context.parameterIndex;
         if (null === parameterIndex) {
             throw new Exception('Type decorator could be used on parameters only');
         }
 
-        MetadataStorage.defineMetadata(Type, T, getMetadataTarget(target, prop), parameterIndex)
-    })
+        MetadataStorage.defineMetadata(Type, T, getMetadataTarget(target, getPropName(context)), parameterIndex)
+    };
 }
